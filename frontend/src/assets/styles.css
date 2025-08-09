@@ -41,6 +41,19 @@
   background-color: #042650; /* Royal Blue */
 }
 
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth color transition */
+  cursor: pointer; /* Adding pointer cursor */
+}
+
 #logo-img {
   mix-blend-mode:luminosity;
   mix-blend-mode:multiply;
@@ -48,20 +61,107 @@
   cursor: pointer; /* Cursor change on hover */
   transition: transform 0.3s ease; /* Adding smooth transition */
 }
+
+#menu-toggle {
+  position: absolute; /* Position it within a relative parent */
+  top: 10px; /* Adjust this to align with your header */
+  right: 10px; /* Moves it to the rightmost corner */
+  display: flex;
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 14px; /* Increased size for better visibility */
+  cursor: pointer;
+  padding: 10px; /* Add some padding */
+}
+
+.header-container {
+  position: relative;
+}
+
+
 #logo-img:hover {
   transform: scale(1.1); /* Subtle zoom effect on hover */
 }
 
 #header-ul {
-  padding: 20px 60px;
-  display: flex;
   list-style: none;
-  font-size: 28px;
+  display: none; /* Hide by default */
+  flex-direction: column; /* Ensure it appears in a row-wise manner */
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #002147;
+  width: 220px; /* Set width for proper spacing */
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  gap: 5px;
+  z-index: 1000;
+  background: transparent; /* Initially transparent */
 }
 
-.header-li {
-  margin: 5px;
+
+#header-ul.open {
+  display: flex; /* Ensures it appears */
+  flex-direction: column; /* Ensures column-wise layout */
+  background: none; /* Removes the background after toggle */
 }
+
+
+
+.header-li {
+  padding: 10px 0;
+  font-size: 18px; /* Increase text size */
+  font-weight: bold; /* Makes text more visible */
+}
+
+/* Styling for menu items */
+.header-li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 15px 40px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.header-li a:hover,
+.active-link {
+  color: rgb(0, 0, 0);
+}
+
+
+/* Responsive Dropdown */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: block;
+  }
+
+  #header-ul {
+    display: none;
+    flex-direction: column; /* Make sure it stays column-wise */
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #002147;
+    width: auto;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    background: transparent; /* Keeps it transparent */
+  }
+
+  #header-ul.open {
+    display: flex;
+    background: none; /* Removes the background */
+  }
+
+  .header-li {
+    padding: 15px; /* Increased padding */
+    font-size: 28px; /* Bigger text */
+  }
+}
+
 
 .link {
   color: white;
@@ -118,7 +218,7 @@
 #content {
   width: 100%;
   overflow: hidden;
-  padding: 20px;
+  padding: 50px;
   background-color: #f4f4f4;
 }
 
@@ -209,11 +309,11 @@
 }
 
 .cta-button {
-  padding: px 20px;
+  padding: 1px 2px;
   background-color: #0f363d;
   color: rgb(255, 255, 255);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -437,10 +537,10 @@ input::placeholder, select::placeholder {
 
 button {
   width: 100px;
-  height: 30px;
+  height: 40px;
   margin: 10px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 80px;
   border: 1px solid #042650;
   background-color: #042650;
   color: white;
@@ -1121,4 +1221,105 @@ button:hover {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+
+
+.complaint-form {
+  background-color: #f0f4ff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.form-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+.form-textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.form-button {
+  margin-top: 15px;
+  padding: 10px 16px;
+  background-color: #4b7bec;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.complaint-list {
+  margin-top: 20px;
+}
+
+.list-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+}
+
+.complaint-card {
+  background-color: #eaf0fa;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-category {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.live-badge {
+  background-color: #28a745;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 12px;
+}
+
+.card-description {
+  margin: 8px 0;
+  color: #444;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666;
 }

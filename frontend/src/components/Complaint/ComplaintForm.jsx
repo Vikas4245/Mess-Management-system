@@ -1,29 +1,43 @@
-import React from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
+import React, { useState } from 'react';
 
-const ComplaintForm = () => {
+const ComplaintForm = ({ onSubmit }) => {
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!category || !description) return;
+    onSubmit({ category, description });
+    setCategory('');
+    setDescription('');
+  };
+
   return (
-    <div>
-      <Header />
-      <div id='complaint-form-div'>
-        <form action="">
-          <div>
-            <label htmlFor="">Regarding</label>
-            <select name="" id="">
-              <option value="">Food</option>
-              <option value="">Staff</option>
-              <option value="">Cleanliness</option>
-              <option value="">Other</option>
-            </select>
-          </div>         
-          <textarea placeholder='Write your Complaint here!' name="" id="" cols="30" rows="2"></textarea>
-          <button type='submit'>Submit</button>        
-        </form>
-      </div>
-      <Footer />
-    </div>
-  )
-}
+    <form className="complaint-form" onSubmit={handleSubmit}>
+      <h2 className="form-title">Raise a Complaint</h2>
 
-export default ComplaintForm
+      <label className="form-label">Category</label>
+      <input
+        className="form-input"
+        type="text"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        placeholder="Enter category"
+      />
+
+      <label className="form-label">Description</label>
+      <textarea
+        className="form-textarea"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Describe your issue"
+      />
+
+      <button className="form-button" type="submit">
+        Submit Complaint
+      </button>
+    </form>
+  );
+};
+
+export default ComplaintForm;
