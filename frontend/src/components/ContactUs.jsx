@@ -26,7 +26,7 @@ const ContactUs = () => {
             rows="6"
             required
           ></textarea>
-          <button type="submit">Send Message</button>
+          <button type="submit" className="form-button">Send Message</button>
         </form>
       </div>
 
